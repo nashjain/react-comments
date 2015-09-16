@@ -26,15 +26,21 @@
 <script src="lib/thirdparty/es5-sham.min.js"></script>
 <script src="lib/thirdparty/console-polyfill.js"></script>
 <script src="lib/thirdparty/jquery.min.js"></script>
+
 <script src="lib/react.js"></script>
 <script src="lib/JSXTransformer.js"></script>
-<script type="text/jsx" src="src/comments.js"></script>
+
+<script type="text/jsx" src="src/model/Comment.js"></script>
+<script type="text/jsx" src="src/model/Comments.js"></script>
+<script type="text/jsx" src="src/view/Comment.js"></script>
+<script type="text/jsx" src="src/view/Comments.js"></script>
 <script type="text/jsx">
-    React.render(<CommentsComponent comments={[
+    var commentsJSON = [
         {id: "1", msg: "First Comment", user: "Naresh", updatedOn: "2014-09-19T15:28:46.493Z", private: false, likes:5},
         {id: "2", msg: "Second Comment", user: "James", updatedOn: "2014-06-19T15:28:46.493Z", private: false, likes:11},
         {id: "3", msg: "Third Comment", user: "Jack", updatedOn: "2014-12-19T15:28:46.493Z", private: false, likes:5}
-    ]} loggedInUser="Dhaval"/>, document.getElementById('comments'));
+    ];
+    React.render(<CommentsComponent comments={ commentsJSON } loggedInUser="Dhaval"/>, document.getElementById('comments'));
 
     React.render(<CommentsComponent sourceUrl="http://localhost/react-comments/comments.php" loggedInUser="Naresh"/>, document.getElementById('ajax_comments'));
 </script>
