@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>Comments Component</title>
+    <link rel="stylesheet" href="css/comments.css"/>
+</head>
+
+<body>
+<h1>Comments Plugin</h1>
+
+<div id="comments">
+    <p>
+        If you can see this, React is not working right.
+    </p>
+</div>
+
+<script src="lib/thirdparty/es5-shim.min.js"></script>
+<script src="lib/thirdparty/es5-sham.min.js"></script>
+<script src="lib/thirdparty/console-polyfill.js"></script>
+<script src="lib/thirdparty/jquery.min.js"></script>
+<script src="lib/react.js"></script>
+<script src="lib/JSXTransformer.js"></script>
+<script type="text/jsx" src="src/comments.js"></script>
+<script type="text/jsx">
+    React.render(<CommentsComponent sourceUrl="http://localhost/react-comments/comments.php" loggedInUser="Naresh"/>, document.getElementById('comments'));
+</script>
+</body>
+</html>
