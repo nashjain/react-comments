@@ -20,27 +20,22 @@ var CommentsComponent = React.createClass({
         }
 
         if (component.props.sourceUrl) {
-            aja()
-                .url(component.props.sourceUrl)
-                .on('success', function(response){
+            $.getJSON(component.props.sourceUrl)
+                .done(function(response){
                     component._setState(new Comments(response), loggedInUser, false);
                 })
-                .on('40*', function(response){
+                .fail(function(response){
                     component._setState(comments, loggedInUser, true);
-                })
-                .on('500', function(response){
-                    component._setState(comments, loggedInUser, true);
-                })
-                .go();
+                });
         }
     },
     render: function () {
         if (this.state.ajax_error)
-            return <MsgComponent className={'error'} msg={'Failed to fetch comments from URL...'} key={'error'}/>;
+            return <MsgComponent className='error' msg={'Failed to fetch comments from URL...'} key='error'/>;
 
         var comments = this.state.comments.authorised(this.state.loggedInUser).sort();
         if (comments.isEmpty())
-            return <MsgComponent className={'empty'} msg={'Be the first one to comment...'} key={'empty'}/>;
+            return <MsgComponent className='empty' msg={'Be the first one to comment...'} key='empty'/>;
 
         var container = this;
         var rerender = function () {

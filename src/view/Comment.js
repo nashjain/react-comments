@@ -10,7 +10,7 @@ var CommentComponent = React.createClass({
             <div className="comment-header">
                 {this.props.comment.user}
                 <form onSubmit={this.handleSubmit} className="likes">
-                    <button>{this.props.comment.likes} Likes</button>
+                    <button ref={this.props.comment.id}>{this.props.comment.likes} Likes</button>
                 </form>
             </div>
             <div className="comment-body">{this.props.comment.msg}</div>
