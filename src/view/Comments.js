@@ -20,13 +20,18 @@ var CommentsComponent = React.createClass({
         }
 
         if (component.props.sourceUrl) {
-            $.getJSON(component.props.sourceUrl)
-                .done(function (data) {
-                    component._setState(new Comments(data), loggedInUser, false);
+            aja()
+                .url(component.props.sourceUrl)
+                .on('success', function(response){
+                    component._setState(new Comments(response), loggedInUser, false);
                 })
-                .fail(function () {
+                .on('40*', function(response){
                     component._setState(comments, loggedInUser, true);
-                });
+                })
+                .on('500', function(response){
+                    component._setState(comments, loggedInUser, true);
+                })
+                .go();
         }
     },
     render: function () {
