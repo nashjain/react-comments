@@ -1,3 +1,10 @@
+//Comments Model
+Comments = function (data) {
+    this.data = data.map(function (elem) {
+        return new Comment(elem);
+    });
+};
+
 Comments.prototype.sort = function () {
     var sortedComments = this.data.sort(function (a, b) {
         return b.compareTo(a);

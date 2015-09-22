@@ -14,9 +14,6 @@ Comment.prototype.compareTo = function (other) {
     return this.likes - other.likes;
 };
 
-//Comments Model
-Comments = function (data) {
-    this.data = data.map(function (elem) {
-        return new Comment(elem);
-    });
+Comment.prototype.incrementLikes = function () {
+    this.likes++;
 };
