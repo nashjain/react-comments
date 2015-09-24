@@ -1,8 +1,7 @@
 var CommentComponent = React.createClass({
     handleSubmit: function (e) {
         e.preventDefault();
-        this.props.comment.incrementLikes();
-        this.props.updateComments();
+        this.props.updateLikes(this.props.comment.id);
     },
     render: function () {
         return <div className="comment">

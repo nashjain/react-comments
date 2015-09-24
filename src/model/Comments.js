@@ -26,3 +26,9 @@ Comments.prototype.isEmpty = function () {
 Comments.prototype.map = function (cb) {
     return this.data.map(cb);
 };
+
+Comments.prototype.updateLikeFor = function (id) {
+    this.data.map(function (comment) {
+        if(comment.id==id) comment.incrementLikes();
+    });
+};

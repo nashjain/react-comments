@@ -38,11 +38,12 @@ var CommentsComponent = React.createClass({
             return <MsgComponent className='empty' msg={'Be the first one to comment...'} key='empty'/>;
 
         var container = this;
-        var sortComments = function () {
+        var rerenderComments = function (id) {
+            comments.updateLikeFor(id);
             container._setState(comments.sort(), container.state.loggedInUser, false);
         };
         var createComment = function (comment) {
-            return <CommentComponent comment={comment} key={comment.id} updateComments={sortComments}/>;
+            return <CommentComponent comment={comment} key={comment.id} updateLikes={rerenderComments}/>;
         };
         return <div>{comments.map(createComment)}</div>;
     }
